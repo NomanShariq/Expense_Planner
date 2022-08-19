@@ -70,11 +70,11 @@ class _NewTransactionsState extends State<NewTransactions> {
               Text(
                 _selectedDate == null
                     ? 'No Date Choosen'
-                    : DateFormat.yMd().format(_selectedDate),
+                    : 'Date Picked ${DateFormat.yMd().format(_selectedDate)}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                width: 10.0,
+                width: 20.0,
               ),
               ElevatedButton(
                 onPressed: () {
@@ -91,6 +91,9 @@ class _NewTransactionsState extends State<NewTransactions> {
                 ),
               ),
             ]),
+            const SizedBox(
+              height: 20.0,
+            ),
             ElevatedButton(
               onPressed: () {
                 _submitData();
