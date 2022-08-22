@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'package:expense_planner/models/transactions.dart';
 
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTx;
 
   const TransactionsList(
     this.transactions,
-  );
+    this.deleteTx,
+  ) : super(key: null);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class TransactionsList extends StatelessWidget {
                   "No TransactionsList",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Image.asset(
@@ -33,13 +36,13 @@ class TransactionsList extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Card(
                   elevation: 6,
-                  margin: EdgeInsets.symmetric(
+                  margin: const EdgeInsets.symmetric(
                     horizontal: 8,
                     vertical: 8,
                   ),
                   child: ListTile(
                     leading: Padding(
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       child: FittedBox(
                         child: CircleAvatar(
                           radius: 30,
@@ -52,10 +55,16 @@ class TransactionsList extends StatelessWidget {
                     title: Text(
                       transactions[index].title,
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        deleteTx(transactions[index].id);
+                      },
                     ),
                   ),
                 );

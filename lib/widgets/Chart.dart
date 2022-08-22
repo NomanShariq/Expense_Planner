@@ -40,7 +40,7 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: const EdgeInsets.all(20),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupTransactionsvalues.map((data) {

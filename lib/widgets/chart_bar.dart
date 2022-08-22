@@ -16,7 +16,7 @@ class ChartBar extends StatelessWidget {
           child:
               FittedBox(child: Text("\$${spendingAmount.toStringAsFixed(0)}")),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -26,7 +26,7 @@ class ChartBar extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   border: Border.all(color: Colors.black, width: 1.0),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -35,13 +35,13 @@ class ChartBar extends StatelessWidget {
                   heightFactor: spendingPctOfTotal,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 95, 180, 245),
+                        color: const Color.fromARGB(255, 95, 180, 245),
                         borderRadius: BorderRadius.circular(20)),
                   )),
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Text(label),

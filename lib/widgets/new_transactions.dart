@@ -21,10 +21,7 @@ class _NewTransactionsState extends State<NewTransactions> {
     final enteredTitle = _titlecontroller.text;
     final enteredAmount = double.parse(_amountcontroller.text);
 
-    widget.addTx(
-      enteredTitle,
-      enteredAmount,
-    );
+    widget.addTx(enteredTitle, enteredAmount, _selectedDate);
 
     Navigator.of(context).pop();
   }
@@ -71,7 +68,7 @@ class _NewTransactionsState extends State<NewTransactions> {
                 _selectedDate == null
                     ? 'No Date Choosen'
                     : 'Date Picked ${DateFormat.yMd().format(_selectedDate)}',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 width: 20.0,
@@ -103,7 +100,7 @@ class _NewTransactionsState extends State<NewTransactions> {
               ),
               child: const Text(
                 "Add Transaction",
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                 ),
               ),

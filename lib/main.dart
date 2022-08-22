@@ -53,15 +53,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
-      return DateTime.now().isAfter(DateTime.now().subtract(Duration(days: 7)));
+      return DateTime.now().isAfter(DateTime.now().subtract(const Duration(days: 7)));
     }).toList();
   }
 
-  void _addNewTransactions(String title, double amount) {
+  void _addNewTransactions(String title, double amount, DateTime chosendate) {
     final newTx = Transaction(
         title: title,
         amount: amount,
-        date: DateTime.now(),
+        date: chosendate,
         id: DateTime.now().toString());
 
     setState(() {
@@ -82,15 +82,21 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _deleteTransactions(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Transactions app"),
+        title: const Text("Transactions app"),
         actions: <Widget>[
           IconButton(
-            padding: EdgeInsets.only(right: 20),
-            icon: Icon(
+            padding: const EdgeInsets.only(right: 20),
+            icon: const Icon(
               Icons.add,
               color: Colors.white,
               size: 27,
@@ -104,14 +110,14 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionsList(_userTransactions),
+            TransactionsList(_userTransactions,_deleteTransactions),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _startAddNewTransactions(context),
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.white,
         ),
