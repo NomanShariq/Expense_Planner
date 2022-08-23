@@ -27,7 +27,7 @@ class TransactionsList extends StatelessWidget {
                   height: 40,
                 ),
                 Image.asset(
-                  "zzz.png",
+                  "assets/images/zzz.png",
                   height: 200,
                 )
               ],
@@ -54,8 +54,8 @@ class TransactionsList extends StatelessWidget {
                     ),
                     title: Text(
                       transactions[index].title,
-                      style:
-                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
